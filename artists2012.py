@@ -13,7 +13,7 @@ for artist in artists:
     dict_toadd = {}
     dict_toadd['Rank'] = artist['Rank']
     artmess= artist['Artist'].title().split()
-    dict_toadd['Artist']=list(reversed(artmess[:-1]))
+    dict_toadd['Name']=list(reversed(artmess[:-1]))
     dict_toadd['TotalSold']=int(re.sub("[^0-9]", "", artist['TotalPrice']))
     dict_toadd['SaleYear']=2012
     new_list.append(dict_toadd)
