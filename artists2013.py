@@ -21,4 +21,4 @@ for artist in artists:
     dict_toadd['SaleYear']= 2013
     new_list.append(dict_toadd)
 
-print(new_list)
+clean2013top500 = new_list

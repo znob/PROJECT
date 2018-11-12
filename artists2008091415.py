@@ -64,44 +64,16 @@ def clean_data(read_file, year):
 # In[44]:
 
 
-cleantop5002015 = clean_data(x, 2015)
-
-
-# In[45]:
-
-
-cleantop5002015[2]
-
-
-# In[46]:
+clean2015top500 = clean_data(x, 2015)
 
 
 file1 = '2014top500.csv'
 y = get_data(file1)
-cleantop5002014 = clean_data(y, 2014)
-
-
-# In[69]:
-
-
-cleantop5002014[0]
-
-
-# In[74]:
+clean2014top500 = clean_data(y, 2014)
 
 
 file2 = '2009500.csv'
 z = get_data(file2)
-
-
-# In[75]:
-
-
-z[0]
-# A, B, C, E, G
-
-
-# In[76]:
 
 
 def clean_data_extended(read_file, year):
@@ -121,19 +93,8 @@ def clean_data_extended(read_file, year):
     return return_list
 
 
-# In[77]:
 
-
-cleantop5002009 = clean_data_extended(z, 2009)
-
-
-# In[78]:
-
-
-cleantop5002009[-1]
-
-
-# In[72]:
+clean2009top500 = clean_data_extended(z, 2009)
 
 
 def clean_extended(data):
@@ -142,37 +103,10 @@ def clean_extended(data):
             artist['Name'].pop()
 
 
-# In[81]:
-
-
-clean_extended(cleantop5002009)
-cleantop5002009[-1]
-
-
-# In[82]:
-
+clean_extended(clean2009top500)
 
 file3 = '2008500.csv'
 w = get_data(file3)
-cleantop5002008 = clean_data_extended(w, 2008)
+clean2008top500 = clean_data_extended(w, 2008)
 
-
-# In[83]:
-
-
-cleantop5002008[-1]
-
-
-# In[84]:
-
-
-clean_extended(cleantop5002008)
-
-
-# In[85]:
-
-
-cleantop5002008[-5]
-
-
-# In[ ]:
+clean_extended(clean2008top500)

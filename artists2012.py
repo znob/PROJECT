@@ -17,4 +17,5 @@ for artist in artists:
     dict_toadd['TotalSold']=int(re.sub("[^0-9]", "", artist['TotalPrice']))
     dict_toadd['SaleYear']=2012
     new_list.append(dict_toadd)
-print(new_list)
+
+clean2012top500 = new_list
