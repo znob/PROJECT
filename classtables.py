@@ -8,25 +8,37 @@ class Artist(Base):
     __tablename__ = 'artists'
     id = Column(Integer, primary_key=True)
     name = Column(Text)
-    years = relationship('Auction', back_populates='auctions')
-    genes = relationship('Gene', back_populates='artists')
+    gender = Column(Text)
+    birthday = Column(Integer)
+    deathday = Column(Integer)
+#     hometown = Column(Text)
+    location = Column(Text)
+    nationality = Column(Text)
+    years = relationship('Year', back_populates='artist')
+    genes = relationship('Gene', secondary='artists_genes')
 
-class Auction(Base):
-    __tablename__ = 'auctions'
+class Year(Base):
+    __tablename__ = 'years'
     id = Column(Integer, primary_key=True)
-    year = Column(Text)
+    year = Column(Integer)
+    rank = Column(Integer)
     artist_id = Column(Integer, ForeignKey('artists.id'))
     artist = relationship('Artist', back_populates='years')
     totalsold = Column(Integer)
     totallots =  Column(Integer)
     maxprice = Column(Integer)
 
+#if no display_name, name
 class Gene(Base):
     __tablename__= 'genes'
     id = Column(Integer, primary_key=True)
     name = Column(Text)
-    artists = relationship('Artist', back_populates='genes')
+    artists = relationship('Artist', secondary='artists_genes')
 
+class ArtistGene(Base):
+    __tablename__ = 'artists_genes'
+    artist_id = Column(Integer, ForeignKey('artists.id'), primary_key=True)
+    gene_id = Column(Integer, ForeignKey('genes.id'), primary_key=True)
 
-engine = create_engine('sqlite:///artists.db', echo=True)
+engine = create_engine('sqlite:///:memory:')
 Base.metadata.create_all(engine)
