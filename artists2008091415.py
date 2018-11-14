@@ -49,8 +49,8 @@ def clean_data(read_file, year):
     for artist in read_file:
         new_item = {}
         new_item['Rank'] = int(artist['A'])
-        name_date = artist['B'].title().split()
-        new_item['Name'] = list(reversed(name_date[:-1]))
+        name_date = artist['B'].title().split('(')
+        new_item['Name'] = name_date[0].split()
         years = name_date[-1].strip('()').split('-')
         new_item['Life'] = years
         new_item['TotalSold'] = int(re.sub("[^0-9]", "", artist['C']))
@@ -81,8 +81,8 @@ def clean_data_extended(read_file, year):
     for artist in read_file:
         new_item = {}
         new_item['Rank'] = int(artist['A'])
-        name_date = artist['B'].title().split()
-        new_item['Name'] = list(reversed(name_date[:-1]))
+        name_date = artist['B'].title().split('(')
+        new_item['Name'] = list(reversed(name_date[0].split()))
         years = name_date[-1].strip('()').split('-')
         new_item['Life'] = years
         new_item['TotalSold'] = int(re.sub("[^0-9]", "", artist['C']))
