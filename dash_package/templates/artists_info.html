@@ -1,0 +1,23 @@
+{% for artist in artists %}
+<h1>Artist Biography: {{ artist.name }}</h1>
+
+<h2>Here is some info:</h2>
+
+<ul>
+  <h3><li>Name: {{artist.name}}</li></h3>
+  <h3><li>Gender: {{artist.gender}}</li></h3>
+  <h3><li>Birthday: {{artist.birthday}}</li></h3>
+  <h3><li>Deathday: {{artist.deathday}}</li></h3>
+  <h3><li>Location: {{artist.location}}</li></h3>
+  <h3><li>Nationality: {{artist.nationality}}</li></h3>
+  <h3><li>Genes they are attached to:</li></h3>
+  <ul>
+    {% for gene in artist.genes %}
+        <li>
+            <h3>{{ gene.name }}</h3>
+        </li>
+    {% endfor %}
+  </ul>
+
+</ul>
+{% endfor %}

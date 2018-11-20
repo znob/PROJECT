@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import re
 import csv
-file = '2007500.csv'
+file = '2011500.csv'
 artists = []
 with open(file) as fh:
     rd = csv.DictReader(fh, delimiter = ',')
@@ -12,11 +12,12 @@ new_list = []
 for artist in artists:
     dict_toadd = {}
     dict_toadd['Rank'] = artist['Rank']
-    artmess= artist['Artist'].title().split()
-    dict_toadd['Name']= list(reversed(artmess[:-1]))
-    dict_toadd['TotalSold']=int(re.sub("[^0-9]", "", artist['TotalSold']))
+    artmess= artist['Name'].title().split('(')
+    dict_toadd['Name']= artmess[0].split()
+    dict_toadd['TotalSold']=int(re.sub("[^0-9]", "", artist['TotalPrice']))
+    dict_toadd['TotalLots']=int(re.sub("[^0-9]", "", artist['TotalSold']))
     dict_toadd['MaxPrice']=int(re.sub("[^0-9]", "", artist['MaxPrice']))
-    dict_toadd['SaleYear']=2007
+    dict_toadd['SaleYear']=2011
     new_list.append(dict_toadd)
 
-clean2007top500 = new_list
+clean2011top500 = new_list
